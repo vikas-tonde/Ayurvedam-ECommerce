@@ -1,0 +1,67 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block title %}Cart Report{% endblock %}
+{% block styles %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+{% endblock %}
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Ayurvedam</a></h1>
+{% if user.is_anonymous %}
+{% include "admin/color_theme_toggle.html" %}
+{% endif %}
+{% endblock %}
+{% block nav-global %}{% endblock %}
+{% if not is_popup %}
+{% block nav-breadcrumbs %}
+<nav class="no-print">
+  <div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">Home</a>
+    &rsaquo;
+    Carts Reports
+</nav>
+{% endblock %}
+{% endif %}
+{% block nav-sidebar %}{% endblock %}
+<div class="no-vis print container text-center">
+  <span id="date"></span>
+  <hr class="line">
+  <br>
+  <script>
+    const dateTime = new Date();
+    document.getElementById('date').innerHTML = "Date:" + dateTime.toLocaleString();
+  </script>
+</div>
+{% block content %}
+<div id="content-main" class="print">
+  <div class="container my-5">
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">User</th>
+            <th scope="col">Product</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for c in data %}
+
+          <tr>
+            <th scope="row">{{c.id}}</th>
+            <td>{{c.quantity}}</td>
+            <td>{{c.user}}</td>
+            <td>{{c.product}}</td>
+          </tr>
+
+          {% endfor %}
+
+        </tbody>
+      </table>
+
+    </div>
+    <button onclick="window.print()" class="btn btn-primary align-center">Print</button>
+  </div>
+
+  {% endblock %}

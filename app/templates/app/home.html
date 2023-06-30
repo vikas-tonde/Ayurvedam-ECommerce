@@ -1,0 +1,118 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block banner_slider %}
+<!--Banner Slider-->
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'app/patanjali/slider1.jpg' %}" class="d-block w-100" alt="..." style="height:700px">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'app/patanjali/slider2.png' %}" class="d-block w-100" alt="..." style="height:700px">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'app/patanjali/slider3.jpg' %}" class="d-block w-100" alt="..." style="height:700px">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'app/patanjali/slider4.jpg' %}" class="d-block w-100" alt="..." style="height:700px">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'app/patanjali/slider5.jpg' %}" class="d-block w-100" alt="..." style="height:700px">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'app/patanjali/slider6.jpg' %}" class="d-block w-100" alt="..." style="height:700px">
+    </div>
+  </div>
+  
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
+</div>
+<!-- End Banner Slider -->
+{% endblock banner_slider %}
+
+{% block livesale %}
+<!-- Live Sale Section -->
+<!--<br>-->
+<!--<div class="container">-->
+<!--  <div class="row bg-danger text-center p-5 text-white border-bottom shadow">-->
+<!--    <h2>SALE IS LIVE NOW</h2>-->
+<!--    <span>Get Great Discount on Each Product</span>-->
+<!--  </div>-->
+<!--</div> <br>-->
+<!-- End Live Sale Section -->
+{% endblock livesale %}
+
+{% block main-content %}
+<div class="m-3">
+    <h1 class="text-center fw-bold">IN DEMAND NOW</h1>
+    <h2>Deals On Digestives</h2>
+    <!-- Slider 6 -->
+ <div class="owl-carousel" id="slider1">
+    {%for d in Digestives%}
+    <a href="{% url 'product-detail' d.id %}" class="btn"><div class="item"><img src="{{d.product_image.url}}" alt="" height="200px"><span class="fw-bold">{{d.title}}</span><br><span class="fs-5">Rs. {{d.discounted_price}}</span></div></a>
+     {%endfor%}
+
+ </div>
+</div>
+
+<div class="m-3">
+    <h1 class="text-center fw-bold">TRENDING NOW</h1>
+    <h2>Deals On Health Drinks</h2>
+    <!-- Slider 1 -->
+ <div class="owl-carousel" id="slider1">
+    {%for hd in HealthDrinks%}
+    <a href="{% url 'product-detail' hd.id %}" class="btn"><div class="item"><img src="{{hd.product_image.url}}" alt="" height="200px"><span class="fw-bold">{{hd.title}}</span><br><span class="fs-5">Rs. {{hd.discounted_price}}</span></div></a>
+     {%endfor%}
+
+ </div>
+</div>
+
+<div class="m-3">
+    <h2>Deals On Fruit Beverages</h2>
+    <!-- Slider 2-->
+    <div class="owl-carousel owl-theme" id="slider2">
+        {%for fb in FruitBeverages %}
+        <a href="{% url 'product-detail' fb.id %}" class="btn"><div class="item"><img src="{{fb.product_image.url}}" alt="" height="200px"><span class="fw-bold">{{fb.title}}</span><br><span class="fs-5">Rs. {{fb.discounted_price}}</span></div></a>
+         {%endfor%}
+    </div>
+   </div>
+
+<div class="m-3">
+    <h2>Deals On Health Wellness</h2>
+    <!-- Slider 2-->
+    <div class="owl-carousel owl-theme" id="slider2">
+        {%for hw in HealthWellness %}
+        <a href="{% url 'product-detail' hw.id %}" class="btn"><div class="item"><img src="{{hw.product_image.url}}" alt="" height="200px"><span class="fw-bold">{{hw.title}}</span><br><span class="fs-5">Rs. {{hw.discounted_price}}</span></div></a>
+         {%endfor%}
+    </div>
+   </div>
+
+<div class="m-3">
+    <h2>Deals On Diet Food</h2>
+    <!-- Slider 2-->
+    <div class="owl-carousel owl-theme" id="slider2">
+        {%for df in DietFood %}
+        <a href="{% url 'product-detail' df.id %}" class="btn"><div class="item"><img src="{{df.product_image.url}}" alt="" height="200px"><span class="fw-bold">{{df.title}}</span><br><span class="fs-5">Rs. {{df.discounted_price}}</span></div></a>
+         {%endfor%}
+    </div>
+   </div>
+
+<div class="m-3">
+    <h2>Deals On Other Health</h2>
+    <!-- Slider 2-->
+    <div class="owl-carousel owl-theme" id="slider2">
+        {%for hp in OtherHealth %}
+        <a href="{% url 'product-detail' hp.id %}" class="btn"><div class="item"><img src="{{hp.product_image.url}}" alt="" height="200px"><span class="fw-bold">{{hp.title}}</span><br><span class="fs-5">Rs. {{hp.discounted_price}}</span></div></a>
+         {%endfor%}
+    </div>
+   </div>
+
+{% endblock main-content %}

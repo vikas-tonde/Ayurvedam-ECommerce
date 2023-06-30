@@ -1,0 +1,34 @@
+{% extends "admin/base_site.html" %}
+{% block extrahead %}
+<style>
+    .no-vis {
+        display: none;
+    }
+    @media print {
+        .no-print {
+            display: none;
+        }
+
+        * {
+            visibility: hidden;
+        }
+
+        .no-vis {
+            visibility: visible;
+            display: block;
+            text-align: center;
+        }
+        .no-vis * {
+            visibility: visible;
+        }
+        .print {
+            visibility: visible;
+            display: block;
+        }
+        .print * {
+            visibility: visible;
+            /* display: block; */
+        }
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "admin/index.html" %}
+<!-- {% block title %}Admin Panel{% endblock title %} -->
+{% block content %}
+{{ block.super }}
+<div class="app-app module foldable-apps-ready">
+    <table>
+        <caption>
+            <a href="/admin/app/" class="section" title="Reports in the Ayurvedam application">Ayurvedam Reports</a>
+        </caption>
+        <tbody>
+            <tr class="model-cart">
+                <th scope="row"><a href="{% url 'carts_report' %}">Cart Report</a></th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="model-customer">
+                <th scope="row"><a href="{% url 'customer_report' %}">Customer Report</a></th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="model-orderplaced">
+                <th scope="row"><a href="{% url 'orders_report' %}">Order placed Reports</a></th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="model-product">
+                <th scope="row"><a href="{% url 'products_report' %}">Products Reports</a></th>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
